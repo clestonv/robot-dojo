@@ -23,14 +23,15 @@ jobs:
 
     - name: Run Robot Framework tests
       run: |
-        robot -d results tests
-
-    - name: Salvar Resultado dos Testes
-      if: ${{ always() }}
-      uses: actions/upload-artifact@v3
+        echo Executando os testes de API do Robot
+        robot --outputdir results/ tests/
+      
+    - name: Test Report
+      uses: actions/upload-artifact@v4
+      if: always()
       with:
-        name: robot-results
-        path: ./results
+        name: robot-framework-report
+        path: results
 
   deploy:
     name: Deploy GitHub Pages 🌐
@@ -53,7 +54,7 @@ jobs:
       - name: Download Artifacts
         uses: actions/download-artifact@v4
         with: 
-          name: robot-results
+          name: robot-framework-report
           path: results/
 
       - name: Upload artifact
