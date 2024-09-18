@@ -6,7 +6,8 @@ Library    String
 Library    Collections
 
 *** Variables ***
-${baseUrl}    https://develop.qacoders-academy.com.br/api/
+# ${baseUrl}    https://develop.qacoders-academy.com.br/api/
+${baseUrl}    https://qualitys-hunters.qacoders-academy.com.br/api/
 ${id_user}    661c585d14ff021dc447c556
 
 *** Keywords ***
