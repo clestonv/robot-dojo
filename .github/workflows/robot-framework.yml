@@ -4,7 +4,7 @@ on: push
 
 jobs:
   test:
-    name: Run Tests
+    name: API Tests
     runs-on: ubuntu-latest
 
     permissions:
@@ -39,16 +39,37 @@ jobs:
       with:
         name: robot-results
         path: ./results
-    
-    - name: Setup Pages
-      uses: actions/configure-pages@v2
 
-    - name: Upload artifact
-      uses: actions/upload-pages-artifact@v1
-      with:
-        path: results/
+  deploy:
+    name: Deploy GitHub Pages 🌐
+    runs-on: ubuntu-latest
+    needs: 
+      - test
+      
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: https://clestonv.github.io/robot-dojo/report.html
 
-    - name: Deploy to Github Pages
-      id: deployment
-      uses: actions/deploy-pages@v1
+    steps:
+      - name: Setup Pages
+        uses: actions/configure-pages@v2
+
+      - name: Download Artifacts
+        uses: actions/download-artifact@v4
+        with: 
+          name: robot-framework-report
+          path: results/
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v1
+        with:
+          path: results/
+
+      - name: Deploy to Github Pages
+        id: deployment
+        uses: actions/deploy-pages@v1
     
