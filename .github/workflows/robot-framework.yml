@@ -1,0 +1,33 @@
+name: Robot Framework Tests
+
+on: push
+
+jobs:
+  test:
+    name: Run Tests
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Clonar arquivos do repositorio
+      uses: actions/checkout@v2
+
+    - name: Configurar Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'
+
+    - name: Instalação das Dependencias
+      run: |
+        pip install robotframework
+        pip install robotframework-requests
+
+    - name: Run Robot Framework tests
+      run: |
+        robot -d results tests
+
+    - name: Salvar Resultado dos Testes
+      if: ${{ always() }}
+      uses: actions/upload-artifact@v3
+      with:
+        name: robot-results
+        path: ./results
