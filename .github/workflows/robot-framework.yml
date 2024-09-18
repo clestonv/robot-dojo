@@ -7,14 +7,6 @@ jobs:
     name: API Tests
     runs-on: ubuntu-latest
 
-    permissions:
-      contents: read
-      pages: write
-      id-token: write
-    environment:
-      name: github-pages
-      url: https://clestonv.github.io/robot-dojo/report.html
-
     steps:
     - name: Clonar arquivos do repositorio
       uses: actions/checkout@v2
@@ -45,7 +37,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: 
       - test
-      
+
     permissions:
       contents: read
       pages: write
@@ -61,7 +53,7 @@ jobs:
       - name: Download Artifacts
         uses: actions/download-artifact@v4
         with: 
-          name: robot-framework-report
+          name: robot-results
           path: results/
 
       - name: Upload artifact
