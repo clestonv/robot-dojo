@@ -9,10 +9,10 @@ jobs:
 
     steps:
     - name: Clonar arquivos do repositorio
-      uses: actions/checkout@v2
+      uses: actions/checkout@v4
 
     - name: Configurar Python
-      uses: actions/setup-python@v2
+      uses: actions/setup-python@v5
       with:
         python-version: '3.x'
 
@@ -21,9 +21,8 @@ jobs:
         pip install robotframework
         pip install robotframework-requests
 
-    - name: Run Robot Framework tests
+    - name: Executando os testes de API do Robot
       run: |
-        echo Executando os testes de API do Robot
         robot --outputdir results/ tests/
       
     - name: Test Report
