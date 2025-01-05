@@ -35,7 +35,7 @@ jobs:
 
   deploy:
     name: Deploy GitHub Pages 🌐
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-24.04
     needs: 
       - test
 
@@ -58,11 +58,11 @@ jobs:
           path: results/
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v4
         with:
           path: results/
 
       - name: Deploy to Github Pages
         id: deployment
-        uses: actions/deploy-pages@v1
+        uses: actions/deploy-pages@v4
     
