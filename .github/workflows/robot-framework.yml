@@ -49,7 +49,7 @@ jobs:
 
     steps:
       - name: Setup Pages
-        uses: actions/configure-pages@v2
+        uses: actions/configure-pages@v4
 
       - name: Download Artifacts
         uses: actions/download-artifact@v4
@@ -58,7 +58,7 @@ jobs:
           path: results/
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v1
+        uses: actions/upload-pages-artifact@v3
         with:
           path: results/
 
