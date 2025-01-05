@@ -7,8 +7,7 @@ Library    Collections
 Library    libs/get_fake_person.py
 
 *** Variables ***
-# ${baseUrl}    https://develop.qacoders-academy.com.br/api/
-${baseUrl}    https://ron-bugado.qacoders.dev.br/api
+${baseUrl}    https://develop.qacoders-academy.com.br/api/
 ${id_user}    661c585d14ff021dc447c556
 
 *** Keywords ***
