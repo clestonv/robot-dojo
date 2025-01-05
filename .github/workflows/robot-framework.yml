@@ -36,6 +36,7 @@ jobs:
   deploy:
     name: Deploy GitHub Pages 🌐
     runs-on: ubuntu-24.04
+    if: always()
     needs: 
       - test
 
